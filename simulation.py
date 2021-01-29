@@ -41,7 +41,7 @@ def simulation_impl(distance, doubleplane, energy, neutron, physics, overwrite):
     # Primary Generator
     generator = ROOT.FairPrimaryGenerator()
     boxGen = ROOT.FairBoxGenerator(2112)
-    boxGen.SetThetaRange(0.0, 2.0)
+    boxGen.SetThetaRange(0.0, 1.0)
     boxGen.SetPhiRange(0.0, 360.0)
     boxGen.SetEkinRange(energy / 1000.0, energy / 1000.0)
     boxGen.SetXYZ(0.0, 0.0, 0.0)
