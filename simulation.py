@@ -1,10 +1,11 @@
 import os
 import sys
 import subprocess
-import ROOT
 
 
 def simulation_impl(distance, doubleplane, energy, neutron, physics, overwrite):
+    import ROOT
+
     outfile = f"output/{distance}m_{doubleplane}dp_{energy}AMeV_{neutron}n_{physics}.simu.root"
     parfile = f"output/{distance}m_{doubleplane}dp_{energy}AMeV_{neutron}n_{physics}.para.root"
 
@@ -80,6 +81,9 @@ def simulation_impl(distance, doubleplane, energy, neutron, physics, overwrite):
 # Here, create a fully standalone process that is fully destroyed afterwards.
 # TODO: Once/If this is fixed, remove this and rename the impl function
 def simulation(distance, doubleplane, energy, neutron, physics):
+    if not os.path.exists("output"):
+        os.makedirs("output")
+
     logfile = f"output/{distance}m_{doubleplane}dp_{energy}AMeV_{neutron}n_{physics}.simu.log"
     d = [
         "python",
